@@ -1,0 +1,19 @@
+pipeline {
+    agent {label 'jenkins'}
+     stages  {
+       stage('write a code') {
+        steps {
+         git url: 'https://github.com/shilpa-ra/saleor-dashboard.git' ,
+            branch: 'main'
+        }
+       }
+         stage('image build') {
+            steps {
+                sh 'docker image build -t shilpara/saleor-dashboard:DEV .'
+                sh 'docker image push shilpara/saleor-dashboard:DEV'
+            }
+         }
+
+     }
+     
+}
