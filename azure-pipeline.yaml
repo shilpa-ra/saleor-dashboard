@@ -1,0 +1,13 @@
+---
+pool:
+  vmImage: ubuntu 22.04
+trigger:
+  - main
+
+  steps:
+    - task:Docker@2
+      inputs:
+        command: buildAndPush
+        Dockerfile: "./Dockerfile"
+        tags: "shilpara/saleorboard:azDEV"
+        containerRegistry: DockerHub
